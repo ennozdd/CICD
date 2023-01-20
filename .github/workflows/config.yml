@@ -1,7 +1,7 @@
 name: XSOAR CI/CD
 on:
   pull_request:
-    types: [closed]
+    types: [closed, synchronize, opened]
     branches:
         - master
 jobs:
@@ -18,3 +18,7 @@ jobs:
         if: github.event.pull_request.merged == true
         run: |
             echo "This will only show if the PR has been merged (and not if it was closed without merging)."
+      - name: 
+        if: github.event.pull_request.merged == false
+        run: |
+            echo "This will only show if the PR has [[NOT]] been merged (and not if it was closed without merging)."
