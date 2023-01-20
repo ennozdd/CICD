@@ -1,8 +1,8 @@
 name: XSOAR CI/CD
 on:
   pull_request:
+    types: [closed]
     branches:
-        types: [closed]
         - master
 jobs:
   build:
