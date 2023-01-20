@@ -2,6 +2,7 @@ name: XSOAR CI/CD
 on:
   pull_request:
     branches:
+        types: [closed]
         - master
 jobs:
   build:
