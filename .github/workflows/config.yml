@@ -9,7 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: CI/CD pull_request checkout
-        if: github.event_name == 'pull_request'
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
@@ -17,6 +16,7 @@ jobs:
       - name: 
         if: github.event.pull_request.merged == false
         run: |
-            curl -s https://storage.googleapis.com/marketplace-dist/content/id_set.json -o test.json 
+            ls -la
+            wget https://storage.googleapis.com/marketplace-dist/content/id_set.json -o test.json 
             ls -la
             cat test.json
