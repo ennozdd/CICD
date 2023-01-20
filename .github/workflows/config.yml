@@ -1,0 +1,19 @@
+name: XSOAR CI/CD
+on:
+  pull_request:
+    branches:
+        - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: CI/CD pull_request checkout
+        if: github.event_name == 'pull_request'
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.ref }}
+      - name: 
+        if: github.event.pull_request.merged == true
+        run: |
+            echo "This will only show if the PR has been merged (and not if it was closed without merging)."
