@@ -16,7 +16,6 @@ jobs:
       - name: 
         if: github.event.pull_request.merged == false
         run: |
-            ls -la
-            wget https://storage.googleapis.com/marketplace-dist/content/id_set.json -o test.json 
-            ls -la
-            cat test.json
+            pip install demisto_sdk
+            python3 -c 'from demisto_sdk.commands.common.tools import get_content_id_set; print(get_content_id_set())'
+           
