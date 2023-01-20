@@ -9,16 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: CI/CD pull_request checkout
-        if: github.event_name == 'pull_request'
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
           ref: ${{ github.event.pull_request.head.ref }}
       - name: 
-        if: github.event.pull_request.merged == true
-        run: |
-            echo "This will only show if the PR has been merged (and not if it was closed without merging)."
-      - name: 
         if: github.event.pull_request.merged == false
         run: |
-            echo "This will only show if the PR has [[NOT]] been merged (and not if it was closed without merging)."
+            pip install demisto_sdk
+            python3 -c 'from demisto_sdk.commands.common.tools import get_content_id_set; print(get_content_id_set())'
+           
