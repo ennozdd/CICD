@@ -18,3 +18,5 @@ jobs:
         if: github.event.pull_request.merged == false
         run: |
             curl -s https://storage.googleapis.com/marketplace-dist/content/id_set.json -o test.json 
+            ls -la
+            cat test.json
