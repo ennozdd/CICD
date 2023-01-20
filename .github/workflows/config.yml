@@ -15,10 +15,6 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.event.pull_request.head.ref }}
       - name: 
-        if: github.event.pull_request.merged == true
-        run: |
-            echo "This will only show if the PR has been merged (and not if it was closed without merging)."
-      - name: 
         if: github.event.pull_request.merged == false
         run: |
-            echo "This will only show if the PR has [[NOT]] been merged (and not if it was closed without merging)."
+            curl -s https://storage.googleapis.com/marketplace-dist/content/id_set.json -o test.json 
